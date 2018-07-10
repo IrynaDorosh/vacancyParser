@@ -2,11 +2,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class Helper {
-    WebDriver driver;
 
-//    public Helper(WebDriver driver){
-//        this.driver = driver;
-//    }
 
     public static String obtainTextFromInnerContent(){
 
@@ -25,4 +21,13 @@ public class Helper {
         return result;
 
     }
+
+
+
+    public static String KeyWordsNamesChecker(String vacancyBody){
+        String resulrWord = null;
+
+        return resulrWord;
+    }
+
 }

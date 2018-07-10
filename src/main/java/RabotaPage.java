@@ -4,7 +4,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class RabotaPage {
-    WebDriver driver;
+    private WebDriver driver;
 
     public RabotaPage(WebDriver driver){
         this.driver=driver;

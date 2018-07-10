@@ -6,12 +6,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 public class LetsParse {
      private static WebDriver driver;
-     private static String vacancyBody;
+
 
 
     @BeforeClass
@@ -29,13 +31,21 @@ public class LetsParse {
 
         List<WebElement> listOfULs = driver.findElements(By.xpath(Constants.RABOTA_XPATH));
 
-        ArrayList<String> listOfAnswers = new ArrayList<String>();
+        HashMap<String, String> linksAndKeyWordsMap = new HashMap<String, String>();
+
         for (int i=0; i<listOfULs.size(); i++){
-            vacancyBody = Helper.obtainTextFromInnerContent();
-            listOfAnswers.add(vacancyBody);
+            listOfULs.get(i).click();
+            String vacancyBody = Helper.obtainTextFromInnerContent();
+            String KeyWordNameIfFound = Helper.KeyWordsNamesChecker(vacancyBody);
+            String refinedLink = driver.getCurrentUrl();
+            linksAndKeyWordsMap.put(refinedLink, KeyWordNameIfFound);
         }
 
-        
+        for(Map.Entry entry: linksAndKeyWordsMap.entrySet()){
+            System.out.println("Key: "+ entry.getKey()+"Value: "+ entry.getValue()); 
+        }
+
+
 
 
 
